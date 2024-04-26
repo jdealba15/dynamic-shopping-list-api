@@ -126,3 +126,27 @@ itemList.addEventListener('click', removeItem);
 categorizeButton.addEventListener('click', categorize);
 fInputContainer.addEventListener('input', sortItems);
 clearListBtn.addEventListener('click', clearItems);
+
+const url = 'http://localhost:3000';
+
+const requestOptions = {
+     method: 'POST',
+     headers: {
+        'Content-Type': 'application/json'
+     },
+    body: JSON.stringify(shoppingList)
+ };
+
+fetch(url, requestOptions)
+ .then(response => {
+    if(!response.ok) {
+        throw new Error('Network response was not okay');
+    }
+    return response.json();
+ })
+ .then(data => {
+    console.log('Response successful:', data);
+ })
+ .catch(error =>{
+    console.error('There was a problem with the fetch operation', error);
+ });
