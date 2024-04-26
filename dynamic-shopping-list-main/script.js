@@ -101,7 +101,7 @@ const sortItems = () => {
     if(value.length > 1){
         sortedList.innerHTML = '';
         let filteredItems = shoppingList.filter(item => item.toLowerCase().includes(value));
-        //clear existing rendered list
+        // clear existing rendered list
         while(itemList.firstChild) {
             itemList.removeChild(itemList.firstChild);
         }

@@ -7,6 +7,7 @@ var cors = require('cors');
 
 app.use(cors())
 
+
 app.post('/', (req, res) => {
     
     const requestData = req.body;
@@ -14,5 +15,6 @@ app.post('/', (req, res) => {
     res.status(200).json({ message: 'Data received successfully', data: requestData });
     console.log(requestData);
 });
+
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
