@@ -5,8 +5,8 @@ app.use(express.urlencoded({ extended:false }));
 const port = 3000;
 var cors = require('cors');
 
-app.use(cors())
 
+app.use(cors())
 
 app.post('/', (req, res) => {
     
