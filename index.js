@@ -1,19 +1,38 @@
-const express = require('express');
+import dotenv from 'dotenv';
+import cors from 'cors';
+import express from 'express';
+import { OpenAI } from 'openai';
+
+dotenv.config();
+
 const app = express();
+const port = 3000;
+
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
+
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended:false }));
-const port = 3000;
-var cors = require('cors');
-
-app.use(cors())
 
 app.post('/', (req, res) => {
-    
     const requestData = req.body;
 
-    res.status(200).json({ message: 'Data received successfully', data: requestData });
-    console.log(requestData);
+    console.log('Received Data:', requestData);
+    res.status(200).json({ message: 'Data received successfully' });
+
+    async function main() {
+    const completion = await openai.chat.completions.create({
+            messages: [{ role: "system", content: "You are a helpful assistant."
+            }],
+            model: "gpt-3.5-turbo",
+            });
+            console.log(completion.choices[0]);
+            }
+            main();
 });
 
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
+
+
+    
