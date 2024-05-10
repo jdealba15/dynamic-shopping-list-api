@@ -15,9 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:false }));
 
 app.post('/', (req, res) => {
-    const dotenvata = req.body;
+    const requestData = req.body;
 
-    console.log('Received Data:', data);
+    console.log('Received Data:', requestData);
     res.status(200).json({ message: 'Data received successfully' });
 
     async function main() {
